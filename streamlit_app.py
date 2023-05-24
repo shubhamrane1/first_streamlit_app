@@ -80,62 +80,26 @@ try:
    else:
 
        back_from_function=get_fruityvice_data(fruit_choice)
-
        streamlit.dataframe(back_from_function)
-
 except URLError as e:
-
   streamlit.error()
-
 streamlit.write('The user entered ', fruit_choice)
-
  
-
- 
-
- 
-
 # Normalizing the response
-
- 
-
 # Output it the screen as a table.
-
- 
-
 # Don't run anything past here while we troubleshoot
-
 # streamlit.stop()
-
- 
-
 # my_cur = my_cnx.cursor()
-
 # my_cur.execute("SELECT * FROM fruit_load_list")
-
 # my_data_rows = my_cur.fetchall()
-
- 
-
- 
-
 # button function
-
 streamlit.header("View Your Fruit List")
-
 def get_fruit_load_list():
-
     with my_cnx.cursor() as my_cur:
-
          my_cur.execute("Select * from fruit_load_list")
-
          return my_cur.fetchall()
-
-
 if streamlit.button('Get fruit list'):
-
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-
     my_data_rows = get_fruit_load_list()
 
     my_cnx.close()
