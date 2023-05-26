@@ -35,14 +35,24 @@ streamlit.dataframe(fruityvice_normalized)
 
 import snowflake.connector
 import streamlit as st
+
 # Assuming 'snowflake' is a valid key in the streamlit.secrets dictionary
-snowflake = '0Tvrv82FgnSgiYZJgeRhPyHxoUimjUa3WG86GYjd'
-my_cnx = snowflake.connector.connect(st.secrets[snowflake])
+snowflake_token = '0Tvrv82FgnSgiYZJgeRhPyHxoUimjUa3WG86GYjd'  # Update this line
+
+my_cnx = snowflake.connector.connect(
+    account='your_account_name',
+    user='your_user',
+    authenticator='externalbrowser',
+    token=snowflake_token
+)
+
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
-streamlit.text("Hello from Snowflake:")
-streamlit.text(my_data_row)
+
+st.text("Hello from Snowflake:")
+st.text(my_data_row)
+
 
 
 
