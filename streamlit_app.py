@@ -36,7 +36,7 @@ import snowflake.connector
 import streamlit as st
 
 # Assuming 'snowflake' is a valid key in the streamlit.secrets dictionary
-snowflake = snowflake
+snowflake = '0Tvrv82FgnSgiYZJgeRhPyHxoUimjUa3WG86GYjd'
 my_cnx = snowflake.connector.connect(st.secrets[snowflake])
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
