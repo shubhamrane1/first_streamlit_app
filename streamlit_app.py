@@ -32,6 +32,13 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
 
+import snowflake.connector
+import streamlit as st
+
+# Assuming 'snowflake' is a valid key in the streamlit.secrets dictionary
+snowflake = snowflake
+my_cnx = snowflake.connector.connect(st.secrets[snowflake])
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
