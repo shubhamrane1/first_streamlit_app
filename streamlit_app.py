@@ -36,7 +36,7 @@ import snowflake.connector
 import streamlit as st
 # Assuming 'snowflake' is a valid key in the streamlit.secrets dictionary
 snowflake = '0Tvrv82FgnSgiYZJgeRhPyHxoUimjUa3WG86GYjd'
-my_cnx = snowflake.connector.connect(st.secrets[snowflake])
+my_cnx = snowflake.connector.connect(st.secrets[0Tvrv82FgnSgiYZJgeRhPyHxoUimjUa3WG86GYjd])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
